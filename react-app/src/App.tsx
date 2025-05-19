@@ -1,30 +1,24 @@
-import './App.scss'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import MenuStyled from './Components/Menu/Menu.styled'
+import Home from './Pages/Home'
+import Contato from './Pages/Contato/Contato'
+import Loja from './Pages/Loja/Loja'
 
 function App() {
-  
 
   return (
     <>
-     <div className='header'>
-      <h2> shakal </h2>
-      <nav className='menu-principal-header'> 
-        <a href="galeria">galeria</a>
-        <div className='menu-dropdown-header'>
-          <span>trilhas e roteiros</span>
-          <ul>
-            <li>próximas trilhas</li>
-            <li>pacotes</li>
-            <li>mapas e dificuldades</li>
-            <li>relatos</li>
-            <li>checklist</li>
-          </ul>
-        </div>
-       {/* próximas trilhas, relatos, mapas e dificuldades, pacotes de trilhas, depoimentos (quem der um depoimento pode ter um desconto no próximo passeio), checklist de trilha */}
-        <a href="audiovisual">audiovisual</a>
-        <a href="loja">loja</a>
-        <a href="contato">contato</a>
-      </nav>
-     </div>
+      <BrowserRouter>
+        <MenuStyled />
+        <Routes>
+
+          <Route path='/' element={<Home />} />
+          <Route path='/contato' element={<Contato />} />
+          <Route path='/loja' element={<Loja />} />
+          
+        </Routes>
+
+      </BrowserRouter>
     </>
   )
 }
