@@ -14,33 +14,13 @@ const MenuStyled = styled(Menu)`
   gap: 25px;
   flex-direction: row;
   justify-content: center;
+  height: 100px;
   
 }
 
-.menu-dropdown-header{
-  display: inline-block;
-  position: relative;
-  
-  ul{
-    opacity: 0;
-    visibility: hidden;
-    list-style: none;
-    position: absolute;
-    padding: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 0px;
-    padding-top: 5px;
-    transition: 0.5s;
-   
-  }
-  li{
-    white-space: nowrap;
-  }
-}
-.menu-dropdown-header:hover ul{
-  opacity: 1;
-  visibility: visible;
+a{
+  text-decoration: none;
+  color: #797982;
 }
 
 `
