@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import MenuStyled from './Components/Menu/Menu.styled'
 import HomeStyled from './Pages/Home/Home.styled'
 import Contato from './Pages/Contato/Contato'

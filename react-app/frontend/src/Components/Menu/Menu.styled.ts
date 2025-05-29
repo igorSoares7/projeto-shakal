@@ -20,7 +20,7 @@ const MenuStyled = styled(Menu)`
 
 a{
   text-decoration: none;
-  color: #797982;
+  color: gray;
 }
 
 `
