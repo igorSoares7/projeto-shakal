@@ -1,13 +1,17 @@
 import express from 'express';
 import route from './src/routes/user.route.ts';
+const PORT = 3000
 
 const userRoute = route
 const app = express();
+app.use(express.json());
 
-app.use("/soma", userRoute)
+app.use("/user", userRoute)
 
 
 
-app.listen(3000, () => {
-    console.log('server on')
+
+
+app.listen(PORT, () => {
+    console.log(`server on na porta ${PORT}`)
 });
