@@ -10,7 +10,8 @@ const app = express();
 connetcDatabase()
 app.use(express.json());
 
-app.use("/user", userRoute)
+app.use("/user", userRoute) 
+//essa rota é somada com a rota de 'routes'! Exemplo? a rota é www.igor.com/user/igor, sendo /user a rota daqui e /igor a que está no diretorio routes
 
 
 

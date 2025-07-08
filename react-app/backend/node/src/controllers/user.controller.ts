@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import { userCreate } from '../services/user.Service.ts';
+import { userCreate, userFindAll } from '../services/user.Service.ts';
 
-const create = async (req, res)=> {
+const create = async (req:Request, res ) => { //ver pq dá erro quando tipo 'res' com :Response
     const { name, username, email, telefone, password,
         sexo, idade, antecedentesMedicos,
         praticaExercicios, frequenciaTrilhas } = req.body; //os campos em variáveis para que eu possa validar elas individualmente
@@ -11,9 +11,9 @@ const create = async (req, res)=> {
        return res.status(400).send({ message: "Insira todos os campos para se registrar" })
     }
 
-  const userService = await userCreate(req.body)
+  const user = await userCreate(req.body)
 
-  if (!userService) {
+  if (!user) {
   return res.status(400).send({message: "Erro ao criar usuário!"})
 }
   
@@ -22,11 +22,11 @@ const create = async (req, res)=> {
     res.status(201).send({
         message: "Usuário criado com sucesso!",
         user: {
+            id: user._id,
             name,
             username,
             email,
             telefone,
-            password,
             sexo,
             idade,
             antecedentesMedicos,
@@ -37,6 +37,16 @@ const create = async (req, res)=> {
 
 };
 
+const findAll = async (req:Request, res) => {
+    const users = await userFindAll()
+
+    if(users.length === 0){
+        return res.status(400).send({message: "Não há usuários cadastrados"})
+    };
+
+    res.send(users)
+
+}
 
 
 
@@ -45,5 +55,6 @@ const create = async (req, res)=> {
 
 export default {
     create,
+    findAll
 
 }

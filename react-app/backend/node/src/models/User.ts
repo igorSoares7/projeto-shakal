@@ -1,3 +1,5 @@
+//Aqui eu interajo com o MongoDB e crio entidades (schemas)
+
 import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema({
