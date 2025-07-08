@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
-import { userCreate, userFindAll } from '../services/user.Service.ts';
+import { userCreate, userFindAll, userFindById } from '../services/user.Service.ts';
+import mongoose from 'mongoose';
 
 const create = async (req:Request, res ) => { //ver pq dá erro quando tipo 'res' com :Response
     const { name, username, email, telefone, password,
@@ -48,6 +49,20 @@ const findAll = async (req:Request, res) => {
 
 }
 
+const findById = async (req: Request, res) => {
+    const id = req.params.id //esse parametro é exatamente o que esta na rota
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(400).send({message: "Id inválido"})
+    }
+
+    const user = await userFindById(id)
+    if(!user){
+        return res.status(400).send({message: "Usuário não encontrado!"})
+    }
+
+    res.send(user)
+}
 
 
 
@@ -55,6 +70,7 @@ const findAll = async (req:Request, res) => {
 
 export default {
     create,
-    findAll
+    findAll,
+    findById,
 
 }
